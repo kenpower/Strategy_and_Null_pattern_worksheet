@@ -36,18 +36,38 @@ std::string RunSystemCommandWithInputAndGetOutput(const char* command, const cha
     return output;
 }
 
-TEST(TestCaseName, TestName) {
+TEST(WholeApplication, CorrectOutput) {
 
     std::string actualOutput = RunSystemCommandWithInputAndGetOutput("Strategy_and_Null_pattern_worksheet.exe", "/n");
 
     std::cout << actualOutput;
 
-    std::string expectedOutput = "No attack strategy set.\nNo attack strategy set.\nNo attack strategy set.\nShooting with a bow and arrow!\nAttacking with a sword!\nCasting a magic spell!\n";
+    std::string expectedOutput = "Shooting with a bow and arrow!\nAttacking with a sword!\nCasting a magic spell!\n";
     EXPECT_EQ(actualOutput, expectedOutput);
 }
 
-TEST(TestCaseName, TestName1) {
+#include "../Strategy_and_Null_pattern_worksheet/strategy_characters.h"
+TEST(Strategy_Characters, InitialAttack) {
+    Character knight;
+    Character archer;
+    Character wizard;
+
+    EXPECT_STREQ("No attack strategy set.\n", knight.attack().c_str()); 
+    EXPECT_STREQ("No attack strategy set.\n", archer.attack().c_str()); 
+    EXPECT_STREQ("No attack strategy set.\n", wizard.attack().c_str()); 
+}
+
+TEST(Strategy_Characters, DynamicAttack) {
+    Character knight;
+    Character archer;
+    Character wizard;
+
+    archer.setAttackStrategy(new BowAndArrowAttack());
+    knight.setAttackStrategy(new SwordAttack());
+    wizard.setAttackStrategy(new MagicAttack());
 
 
-    EXPECT_TRUE(false);
+    EXPECT_STREQ("Attacking with a sword!\n", knight.attack().c_str());
+    EXPECT_STREQ("Shooting with a bow and arrow!\n", archer.attack().c_str());
+    EXPECT_STREQ("Casting a magic spell!\n", wizard.attack().c_str());
 }
