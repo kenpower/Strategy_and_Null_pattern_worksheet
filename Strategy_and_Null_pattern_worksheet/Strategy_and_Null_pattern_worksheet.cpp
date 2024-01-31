@@ -1,7 +1,25 @@
 #include <iostream>
-#include "characters.h"
-#include "strategy_characters.h"
 
+class Knight {
+public:
+    std::string attack() {
+        return "Attacking with a sword!\n";
+    }
+};
+
+class Archer {
+public:
+    std::string attack() {
+        return "Shooting with a bow and arrow!\n";
+    }
+};
+
+class Wizard {
+public:
+    std::string attack() {
+        return "Casting a magic spell!\n";
+    }
+};
 
 void charactersAttack() {
     Knight knight;
@@ -13,6 +31,33 @@ void charactersAttack() {
     std::cout << wizard.attack();
 
 }
+
+class AttackStrategy {
+public:
+    virtual std::string attack() = 0;
+};
+
+class Character {
+protected:
+    AttackStrategy* attackStrategy;
+
+public:
+    Character() : attackStrategy(nullptr) {}
+
+    void setAttackStrategy(AttackStrategy* strategy) {
+        attackStrategy = strategy;
+    }
+
+    std::string attack() {
+        if (attackStrategy) {
+            return attackStrategy->attack();
+        }
+        else {
+            return "No attack strategy set.\n";
+        }
+    }
+};
+
 
 void charactersAttackwithStrategy() {
     Character knight;
