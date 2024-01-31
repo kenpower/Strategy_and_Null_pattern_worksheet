@@ -37,7 +37,12 @@ void charactersAttackwithStrategy() {
 
 
 int main() {
-    //charactersAttack();
+    charactersAttack();
+
+    std::cout << "\n===============================================================";
+    std::cout << "\n============Now with dynamnic Weapons==========================";
+    std::cout << "\n===============================================================\n";
+
 
     charactersAttackwithStrategy();
 }
