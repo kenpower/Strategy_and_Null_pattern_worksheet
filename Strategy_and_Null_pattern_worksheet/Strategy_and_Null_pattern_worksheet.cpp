@@ -23,6 +23,7 @@ void charactersAttackwithStrategy() {
         std::cout << "1=bow-arrow, 2=sword or 3=magic\n";
 
         std::cin >> c;
+        // uncomment these lines
         //if(c== '1')
         //    knight.setAttackStrategy(/*??????*/);
         //if (c == '2')
