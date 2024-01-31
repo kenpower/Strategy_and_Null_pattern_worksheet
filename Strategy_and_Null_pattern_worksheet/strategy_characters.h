@@ -6,29 +6,6 @@ public:
     virtual std::string attack() = 0;
 };
 
-// Concrete Strategies
-class SwordAttack : public AttackStrategy {
-public:
-    std::string attack() override {
-        return "Attacking with a sword!\n";
-    }
-};
-
-class BowAndArrowAttack : public AttackStrategy {
-public:
-    std::string attack() override {
-        return "Shooting with a bow and arrow!\n";
-    }
-};
-
-class MagicAttack : public AttackStrategy {
-public:
-    std::string attack() override {
-        return "Casting a magic spell!\n";
-    }
-};
-
-
 class Character {
 protected:
     AttackStrategy* attackStrategy;

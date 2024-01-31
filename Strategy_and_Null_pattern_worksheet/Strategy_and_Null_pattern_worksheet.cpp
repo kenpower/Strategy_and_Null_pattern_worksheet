@@ -16,26 +16,28 @@ void charactersAttack() {
 
 void charactersAttackwithStrategy() {
     Character knight;
-    Character archer;
-    Character wizard;
 
-    std::cout << knight.attack(); // Initial attack strategy for Knight
-    std::cout << archer.attack(); // Initial attack strategy for Archer
-    std::cout << wizard.attack(); // Initial attack strategy for Wizard
+    while (true) {
+        char c;
+        std::cout << "What weapon do you want the knight to have?\n";
+        std::cout << "1=bow-arrow, 2=sword or 3=magic\n";
 
-    // Change attack strategies dynamically
-    knight.setAttackStrategy(new BowAndArrowAttack());
-    archer.setAttackStrategy(new SwordAttack());
-    wizard.setAttackStrategy(new MagicAttack());
+        std::cin >> c;
+        //if(c== '1')
+        //    knight.setAttackStrategy(/*??????*/);
+        //if (c == '2')
+        //    knight.setAttackStrategy(/*??????*/);
+        //if (c == '3')
+        //    knight.setAttackStrategy(/*??????*/);
 
-    std::cout << knight.attack(); // New attack strategy for Knight
-    std::cout << archer.attack(); // New attack strategy for Archer
-    std::cout << wizard.attack(); // New attack strategy for Wizard
+        std::cout << knight.attack();
+    }
+
 }
 
 
 int main() {
-    charactersAttack();
+    //charactersAttack();
 
-    //charactersAttackwithStrategy();
+    charactersAttackwithStrategy();
 }
